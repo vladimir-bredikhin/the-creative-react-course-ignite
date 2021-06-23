@@ -4,6 +4,7 @@ Things made in different way:
 
 - project generated with `yarn create @vitejs/app`
 - using TypeScript
+- environment variables used in [vite way](https://vitejs.dev/guide/env-and-mode.html)
 
 Thing might be improved:
 
