@@ -1,7 +1,11 @@
+import axios from 'axios'
+
 const BASE_URL = 'https://api.rawg.io/api'
-const POPULAR_GAMES_URL = `${BASE_URL}/games?dates=${yyyyMMdd(
+const POPULAR_GAMES_PATH = `/games?dates=${yyyyMMdd(
   -1
 )},${yyyyMMdd()}&ordering=-rating&page_size=10`
+
+const http = axios.create({ baseURL: BASE_URL })
 
 function yyyyMMdd(yearStep: -1 | 0 = 0) {
   const _ = (part: number) => (part < 10 ? `0${part}` : part)
@@ -15,4 +19,8 @@ function yyyyMMdd(yearStep: -1 | 0 = 0) {
   return `${year}-${month}-${day}`
 }
 
-export { BASE_URL, POPULAR_GAMES_URL }
+function fetchPopularGames() {
+  return http.get(POPULAR_GAMES_PATH)
+}
+
+export { fetchPopularGames }
