@@ -10,8 +10,8 @@ function fetchUpcomingGames() {
   return http.get('/api/upcoming')
 }
 
-function fetchNewGames() {
-  return http.get('/api/new')
+function fetchFreshGames() {
+  return http.get('/api/fresh')
 }
 
-export { fetchPopularGames, fetchUpcomingGames, fetchNewGames }
+export { fetchPopularGames, fetchUpcomingGames, fetchFreshGames }

@@ -9,9 +9,11 @@ Things made in different way:
 - using TypeScript
 - environment variables used in [vite way](https://vitejs.dev/guide/env-and-mode.html)
 - add local simple express proxy to bypass CORS issues and not publishing the API KEY (uncommited)
+- used 'gap' CSS property for Games grid
 
 Thing might be improved:
 
 - use [Redux Toolkit](https://redux-toolkit.js.org/) for initial redux setup
+- split fetch games to separate actions
 
 To fix:

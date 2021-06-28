@@ -1,5 +1,5 @@
 import {
-  fetchNewGames,
+  fetchFreshGames,
   fetchPopularGames,
   fetchUpcomingGames,
 } from '../../util/API'
@@ -16,12 +16,12 @@ export const loadGames = () => async (dispatch: ({}) => void) => {
   } = await fetchUpcomingGames()
 
   const {
-    data: { results: newGames },
-  } = await fetchNewGames()
+    data: { results: fresh },
+  } = await fetchFreshGames()
 
   dispatch({
     type: FETCH_GAMES,
-    payload: { popular, upcoming, new: newGames },
+    payload: { popular, upcoming, fresh },
   })
 }
 

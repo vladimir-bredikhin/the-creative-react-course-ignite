@@ -1,14 +1,16 @@
 import { FETCH_GAMES } from '../actions/games'
+import GamesState from '../model/GamesState'
 
-const initState = {
+const initState: GamesState = {
   popular: [],
-  new: [],
+  fresh: [],
   upcoming: [],
+  searched: [],
 }
 
 const reducer = (
   state = initState,
-  action: { type: string; payload?: any }
+  action: { type: string; payload?: GamesState }
 ) => {
   switch (action.type) {
     case FETCH_GAMES:
