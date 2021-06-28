@@ -6,4 +6,12 @@ function fetchPopularGames() {
   return http.get('/api/popular')
 }
 
-export { fetchPopularGames }
+function fetchUpcomingGames() {
+  return http.get('/api/upcoming')
+}
+
+function fetchNewGames() {
+  return http.get('/api/new')
+}
+
+export { fetchPopularGames, fetchUpcomingGames, fetchNewGames }

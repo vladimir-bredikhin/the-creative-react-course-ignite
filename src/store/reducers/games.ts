@@ -6,7 +6,10 @@ const initState = {
   upcoming: [],
 }
 
-const reducer = (state = initState, action) => {
+const reducer = (
+  state = initState,
+  action: { type: string; payload?: any }
+) => {
   switch (action.type) {
     case FETCH_GAMES:
       return { ...state, ...action.payload }
