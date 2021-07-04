@@ -1,10 +1,9 @@
+import { FETCH_GAMES } from '.'
 import {
   fetchFreshGames,
   fetchPopularGames,
   fetchUpcomingGames,
 } from '../../util/API'
-
-const FETCH_GAMES = 'FETCH_GAMES'
 
 export const loadGames = () => async (dispatch: ({}) => void) => {
   const {

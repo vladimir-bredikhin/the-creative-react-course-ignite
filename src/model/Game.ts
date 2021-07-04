@@ -3,4 +3,5 @@ export default interface Game {
   name: string
   released: string
   background_image: string
+  screenshots?: {}
 }

@@ -15,5 +15,6 @@ Thing might be improved:
 
 - use [Redux Toolkit](https://redux-toolkit.js.org/) for initial redux setup
 - split fetch games to separate actions
+- make game actions a type like 'FETCH_GAMES | FETCH_GAME_DETAILS'
 
 To fix:

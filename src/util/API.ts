@@ -14,4 +14,18 @@ function fetchFreshGames() {
   return http.get('/api/fresh')
 }
 
-export { fetchPopularGames, fetchUpcomingGames, fetchFreshGames }
+function fetchGameDetails(id: string) {
+  return http.get(`/api/details/${id}`)
+}
+
+function fetchGameScreenshots(id: string) {
+  return http.get(`/api/screenshots/${id}`)
+}
+
+export {
+  fetchPopularGames,
+  fetchUpcomingGames,
+  fetchFreshGames,
+  fetchGameDetails,
+  fetchGameScreenshots,
+}
