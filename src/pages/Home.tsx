@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Game from '../components/Game'
+import GameDetails from '../components/GameDetails'
 import { loadGames } from '../store/actions/games'
 import RootState from '../store/model/RootState'
 
@@ -18,6 +19,7 @@ const Home = () => {
 
   return (
     <GameList>
+      <GameDetails />
       <h2>Upcoming Games</h2>
       <Games>
         {upcoming.map(game => (

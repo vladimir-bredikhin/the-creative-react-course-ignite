@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
       background-color: darkgrey;
       border-radius: 100px;
     }
+
+    &::-webkit-scrollbar-track {
+      background: #ffffff;
+    }
   }
 
   body {

@@ -9,7 +9,7 @@ const loadGameDetails = (id: string) => async (dispatch: ({}) => void) => {
 
   dispatch({
     type: FETCH_GAME_DETAILS,
-    payload: { game: { ...details, screenshots } },
+    payload: { ...details, screenshots },
   })
 }
 
