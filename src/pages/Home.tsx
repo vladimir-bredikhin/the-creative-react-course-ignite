@@ -12,13 +12,13 @@ const Home = () => {
   const { id } = useParams<{ id?: string }>()
 
   const dispatch = useDispatch()
-  const { popular, fresh, upcoming } = useSelector(
-    (state: RootState) => state.games
-  )
+  const { games } = useSelector((state: RootState) => state)
 
   useEffect(() => {
     dispatch(loadGames())
   }, [])
+
+  const { popular, fresh, upcoming } = games
 
   return (
     <GameList>

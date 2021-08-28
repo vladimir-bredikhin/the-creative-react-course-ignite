@@ -5,9 +5,11 @@ import styled from 'styled-components'
 import RootState from '../store/model/RootState'
 
 const GameDetails = () => {
-  const game = useSelector((state: RootState) => state.gameDetails)
+  const { isLoading, gameDetails: game } = useSelector(
+    (state: RootState) => state
+  )
 
-  return !!Object.keys(game).length ? (
+  return !isLoading ? (
     <CardShadow>
       <Details>
         <Stats>

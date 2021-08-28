@@ -1,11 +1,14 @@
-import { FETCH_GAMES } from '.'
+import { GET_GAMES } from '.'
 import {
   fetchFreshGames,
   fetchPopularGames,
-  fetchUpcomingGames,
+  fetchUpcomingGames
 } from '../../util/API'
+import isLoading from './isLoading'
 
 export const loadGames = () => async (dispatch: ({}) => void) => {
+  dispatch(isLoading(true))
+
   const {
     data: { results: popular },
   } = await fetchPopularGames()
@@ -19,9 +22,11 @@ export const loadGames = () => async (dispatch: ({}) => void) => {
   } = await fetchFreshGames()
 
   dispatch({
-    type: FETCH_GAMES,
+    type: GET_GAMES,
     payload: { popular, upcoming, fresh },
   })
+
+  dispatch(isLoading(false))
 }
 
-export { FETCH_GAMES }
+export { GET_GAMES }

@@ -16,6 +16,8 @@ Thing might be improved:
 
 - use [Redux Toolkit](https://redux-toolkit.js.org/) for initial redux setup
 - split fetch games to separate actions
-- make game actions a type like 'FETCH_GAMES | FETCH_GAME_DETAILS'
+- make game actions a type like 'GET_GAMES | GET_GAME_DETAILS'
 
 To fix:
+
+- global isLoading didn't fix the problem with game details on refresh

@@ -1,4 +1,4 @@
-import { FETCH_GAMES } from '../actions/games'
+import { GET_GAMES } from '../actions/games'
 import GamesState from '../model/GamesState'
 
 const initState: GamesState = {
@@ -13,7 +13,7 @@ const reducer = (
   action: { type: string; payload?: GamesState }
 ) => {
   switch (action.type) {
-    case FETCH_GAMES:
+    case GET_GAMES:
       return { ...state, ...action.payload }
     default:
       return state
