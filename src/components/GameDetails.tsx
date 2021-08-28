@@ -58,21 +58,20 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
+`
 
 const Info = styled(motion.div)`
   text-align: center;
-`;
-
+`
 
 const Platforms = styled(motion.div)`
   display: flex;
   justify-content: space-evenly;
-  
+
   img {
     margin-left: 3rem;
   }
-`;
+`
 
 const Media = styled(motion.div)`
   margin-top: 5rem;
@@ -80,11 +79,11 @@ const Media = styled(motion.div)`
   img {
     width: 100%;
   }
-`;
+`
 
 const Description = styled(motion.div)`
   margin: 5rem 0;
-`;
+`
 
 const CardShadow = styled(motion.div)`
   width: 100%;

@@ -10,6 +10,7 @@ Things made in different way:
 - environment variables used in [vite way](https://vitejs.dev/guide/env-and-mode.html)
 - add local simple express proxy to bypass CORS issues and not publishing the API KEY (uncommited)
 - used 'gap' CSS property for Games grid
+- using useParams from react-router-dom instead of splitting pathname by / in Home component
 
 Thing might be improved:
 
