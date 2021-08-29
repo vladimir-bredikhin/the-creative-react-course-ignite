@@ -12,7 +12,7 @@ const Home = () => {
   const { id } = useParams<{ id?: string }>()
 
   const dispatch = useDispatch()
-  const { games, gameDetails } = useSelector((state: RootState) => state)
+  const { games } = useSelector((state: RootState) => state)
 
   useEffect(() => {
     dispatch(loadGames())

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import RootState from '../store/model/RootState'
+import { resizeImagePath } from '../util/image'
 
 const GameDetails = () => {
   const history = useHistory()
@@ -36,14 +37,14 @@ const GameDetails = () => {
           </Info>
         </Stats>
         <Media>
-          <img src={game.background_image} />
+          <img src={resizeImagePath(game.background_image, 1280)} />
         </Media>
         <Description>
           <p>{game.description_raw}</p>
         </Description>
         <div className='screenshots'>
           {game.screenshots.map(({ image }) => (
-            <img src={image} key={image} />
+            <img src={resizeImagePath(image, 1280)} key={image} />
           ))}
         </div>
       </Details>

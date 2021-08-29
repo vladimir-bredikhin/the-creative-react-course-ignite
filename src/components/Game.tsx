@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import IGame from '../model/Game'
 import { loadGameDetails } from '../store/actions/gameDetails'
+import { resizeImagePath } from '../util/image'
 
 const Game: React.FC<{ game: IGame }> = ({ game }) => {
   const { id, name, released, background_image: img } = game
@@ -19,7 +20,7 @@ const Game: React.FC<{ game: IGame }> = ({ game }) => {
       <Link to={`/games/${id}`}>
         <h3>{name}</h3>
         <p>{released}</p>
-        <img src={img} alt={name} />
+        <img src={resizeImagePath(img, 640)} alt={name} />
       </Link>
     </StyledGame>
   )
