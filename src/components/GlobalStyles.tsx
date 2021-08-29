@@ -50,6 +50,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: 3rem;
   }
 
+  input {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+  }
+
   .no-scroll {
     overflow: hidden;
   }
