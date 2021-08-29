@@ -3,6 +3,7 @@ import React, { MouseEvent, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import { starEmpty, starFull } from '../img'
 import RootState from '../store/model/RootState'
 import { platformIcon, resizeImagePath } from '../util/image'
 
@@ -28,13 +29,26 @@ const GameDetails = () => {
     }
   }
 
+  const renderRatingAsStars = (rating: number) => {
+    const stars = []
+
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <img src={i <= rating ? starFull : starEmpty} key={`star-${i}`} />
+      )
+    }
+
+    return stars
+  }
+
   return !isLoading && id && Object.keys(game).length ? (
     <CardShadow className='card-shadow' onClick={onCardShadowClick}>
       <Details layoutId={`${id}`}>
         <Stats>
           <div className='rating'>
             <motion.h3 layoutId={`name-${id}`}>{game.name}</motion.h3>
-            <p>Rating: {game.rating}</p>
+            <p title={`${game.rating}`}>Rating: {game.rating}</p>
+            {renderRatingAsStars(Math.floor(game.rating))}
           </div>
           <Info>
             <h3>Platforms</h3>
@@ -89,6 +103,13 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 2rem;
+    height: 2rem;
+  }
 `
 
 const Info = styled(motion.div)`
