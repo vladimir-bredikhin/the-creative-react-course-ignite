@@ -1,14 +1,22 @@
 import { motion } from 'framer-motion'
-import React, { MouseEvent } from 'react'
+import React, { MouseEvent, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import RootState from '../store/model/RootState'
-import { resizeImagePath } from '../util/image'
+import { platformIcon, resizeImagePath } from '../util/image'
 
 const GameDetails = () => {
   const history = useHistory()
   const { id } = useParams<{ id?: string }>()
+
+  useEffect(() => {
+    if (id) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove('no-scroll')
+    }
+  }, [id])
 
   const { isLoading, gameDetails: game } = useSelector(
     (state: RootState) => state
@@ -20,7 +28,7 @@ const GameDetails = () => {
     }
   }
 
-  return !isLoading ? (
+  return !isLoading && id && Object.keys(game).length ? (
     <CardShadow className='card-shadow' onClick={onCardShadowClick}>
       <Details layoutId={`${id}`}>
         <Stats>
@@ -32,7 +40,12 @@ const GameDetails = () => {
             <h3>Platforms</h3>
             <Platforms>
               {game.platforms.map(({ platform }) => (
-                <h3 key={platform.id}>{platform.name}</h3>
+                <img
+                  key={platform.id}
+                  src={platformIcon(platform.slug)}
+                  alt={platform.name}
+                  title={platform.name}
+                />
               ))}
             </Platforms>
           </Info>
@@ -64,6 +77,7 @@ const Details = styled(motion.div)`
   position: absolute;
   left: 10%;
   color: #000000;
+  z-index: 10;
 
   img {
     display: block;
@@ -110,6 +124,7 @@ const CardShadow = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 5;
 
   &::-webkit-scrollbar {
     width: 0.5rem;
