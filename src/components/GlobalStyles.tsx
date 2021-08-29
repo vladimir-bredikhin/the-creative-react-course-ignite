@@ -49,6 +49,10 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     font-size: 3rem;
   }
+
+  .no-scroll {
+    overflow: hidden;
+  }
 `
 
 export default GlobalStyle

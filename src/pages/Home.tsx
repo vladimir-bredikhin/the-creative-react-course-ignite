@@ -12,11 +12,19 @@ const Home = () => {
   const { id } = useParams<{ id?: string }>()
 
   const dispatch = useDispatch()
-  const { games } = useSelector((state: RootState) => state)
+  const { games, gameDetails } = useSelector((state: RootState) => state)
 
   useEffect(() => {
     dispatch(loadGames())
   }, [])
+
+  useEffect(() => {
+    if (id) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove('no-scroll')
+    }
+  }, [id])
 
   const { popular, fresh, upcoming } = games
 

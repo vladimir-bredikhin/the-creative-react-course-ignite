@@ -31,8 +31,10 @@ const StyledGame = styled(motion.div)`
   text-align: center;
   border-radius: 1rem;
   cursor: pointer;
+  overflow: hidden;
 
   img {
+    display: block;
     width: 100%;
     height: 40vh;
     object-fit: cover;

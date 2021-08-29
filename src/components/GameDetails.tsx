@@ -1,16 +1,25 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { MouseEvent } from 'react'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import RootState from '../store/model/RootState'
 
 const GameDetails = () => {
+  const history = useHistory()
+
   const { isLoading, gameDetails: game } = useSelector(
     (state: RootState) => state
   )
 
+  const onCardShadowClick = ({ target }: MouseEvent) => {
+    if ((target as HTMLElement).classList.contains('card-shadow')) {
+      history.push('/')
+    }
+  }
+
   return !isLoading ? (
-    <CardShadow>
+    <CardShadow className='card-shadow' onClick={onCardShadowClick}>
       <Details>
         <Stats>
           <div className='rating'>
@@ -52,6 +61,7 @@ const Details = styled(motion.div)`
   color: #000000;
 
   img {
+    display: block;
     width: 100%;
   }
 `

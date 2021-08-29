@@ -11,6 +11,7 @@ Things made in different way:
 - add local simple express proxy to bypass CORS issues and not publishing the API KEY (uncommited)
 - used 'gap' CSS property for Games grid
 - using useParams from react-router-dom instead of splitting pathname by / in Home component
+- add 'no-scroll' class to body with useEffect for id in Home component instead of setting it with style
 
 Thing might be improved:
 
