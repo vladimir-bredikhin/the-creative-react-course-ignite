@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion'
 import React, { MouseEvent } from 'react'
 import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import RootState from '../store/model/RootState'
 import { resizeImagePath } from '../util/image'
 
 const GameDetails = () => {
   const history = useHistory()
+  const { id } = useParams<{ id?: string }>()
 
   const { isLoading, gameDetails: game } = useSelector(
     (state: RootState) => state
@@ -21,10 +22,10 @@ const GameDetails = () => {
 
   return !isLoading ? (
     <CardShadow className='card-shadow' onClick={onCardShadowClick}>
-      <Details>
+      <Details layoutId={`${id}`}>
         <Stats>
           <div className='rating'>
-            <h3>{game.name}</h3>
+            <motion.h3 layoutId={`name-${id}`}>{game.name}</motion.h3>
             <p>Rating: {game.rating}</p>
           </div>
           <Info>
@@ -37,7 +38,10 @@ const GameDetails = () => {
           </Info>
         </Stats>
         <Media>
-          <img src={resizeImagePath(game.background_image, 1280)} />
+          <motion.img
+            layoutId={`img-${id}`}
+            src={resizeImagePath(game.background_image, 1280)}
+          />
         </Media>
         <Description>
           <p>{game.description_raw}</p>

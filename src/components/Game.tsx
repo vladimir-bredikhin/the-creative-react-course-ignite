@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import IGame from '../model/Game'
 import { loadGameDetails } from '../store/actions/gameDetails'
@@ -16,12 +15,14 @@ const Game: React.FC<{ game: IGame }> = ({ game }) => {
   }
 
   return (
-    <StyledGame onClick={onLoadGameDetails}>
-      <Link to={`/games/${id}`}>
-        <h3>{name}</h3>
-        <p>{released}</p>
-        <img src={resizeImagePath(img, 640)} alt={name} />
-      </Link>
+    <StyledGame layoutId={`${id}`} onClick={onLoadGameDetails}>
+      <motion.h3 layoutId={`name-${id}`}>{name}</motion.h3>
+      <p>{released}</p>
+      <motion.img
+        layoutId={`img-${id}`}
+        src={resizeImagePath(img, 640)}
+        alt={name}
+      />
     </StyledGame>
   )
 }

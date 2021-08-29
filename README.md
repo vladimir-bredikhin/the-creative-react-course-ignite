@@ -22,3 +22,4 @@ Thing might be improved:
 To fix:
 
 - global isLoading didn't fix the problem with game details on refresh
+- component transition not working properly
