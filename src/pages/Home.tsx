@@ -16,7 +16,7 @@ const Home = () => {
     dispatch(loadGames())
   }, [])
 
-  const { popular, fresh, upcoming } = games
+  const { popular, fresh, upcoming, searched } = games
 
   return (
     <GameList>
@@ -24,6 +24,18 @@ const Home = () => {
         <AnimatePresence>
           <GameDetails />
         </AnimatePresence>
+        {!!searched.length && (
+          <>
+            <h2>Searched Games</h2>
+            <Games>
+              {searched.map(game => (
+                <Link to={`/games/${game.id}`} key={game.id}>
+                  <Game game={game} />
+                </Link>
+              ))}
+            </Games>
+          </>
+        )}
         <h2>Upcoming Games</h2>
         <Games>
           {upcoming.map(game => (

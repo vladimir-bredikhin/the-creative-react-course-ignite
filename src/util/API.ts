@@ -22,10 +22,17 @@ function fetchGameScreenshots(id: string) {
   return http.get(`/api/screenshots/${id}`)
 }
 
+function searchGamesByName(name: string, pageSize = 9) {
+  return http.get('/api/search', {
+    params: { search: name, page_size: pageSize },
+  })
+}
+
 export {
   fetchPopularGames,
   fetchUpcomingGames,
   fetchFreshGames,
   fetchGameDetails,
   fetchGameScreenshots,
+  searchGamesByName,
 }

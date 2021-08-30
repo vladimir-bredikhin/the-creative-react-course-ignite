@@ -1,8 +1,9 @@
-import { GET_GAMES } from '.'
+import { CLEAR_SEARCHED, GET_GAMES, GET_SEARCHED } from '.'
 import {
   fetchFreshGames,
   fetchPopularGames,
-  fetchUpcomingGames
+  fetchUpcomingGames,
+  searchGamesByName
 } from '../../util/API'
 import isLoading from './isLoading'
 
@@ -27,6 +28,27 @@ export const loadGames = () => async (dispatch: ({}) => void) => {
   })
 
   dispatch(isLoading(false))
+}
+
+export const searchGames = (name: string) => async (dispatch: ({}) => void) => {
+  dispatch(isLoading(true))
+
+  const {
+    data: { results: searched },
+  } = await searchGamesByName(name)
+
+  dispatch({
+    type: GET_SEARCHED,
+    payload: { searched },
+  })
+
+  dispatch(isLoading(false))
+}
+
+export const clearSearched = () => {
+  return {
+    type: CLEAR_SEARCHED,
+  }
 }
 
 export { GET_GAMES }

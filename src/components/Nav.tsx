@@ -1,19 +1,39 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { logo } from '../img'
+import { clearSearched, searchGames } from '../store/actions/games'
 
 const Nav = () => {
+  const dispatch = useDispatch()
+  const [searchText, setSearchText] = useState('')
+
+  const onSearchGames = (e: Event) => {
+    e.preventDefault()
+
+    dispatch(searchGames(searchText))
+    setSearchText('')
+  }
+
+  const onClearSearched = () => {
+    dispatch(clearSearched())
+  }
+
   return (
     <StyledNav>
-      <LogoContainer>
+      <LogoContainer onClick={() => onClearSearched()}>
         <img src={logo} alt='Ignite' />
         <h1>Ignite</h1>
       </LogoContainer>
-      <div className='search'>
-        <input type='text' name='' id=' ' />
-        <button>Search</button>
-      </div>
+      <form className='search' onSubmit={e => onSearchGames(e)}>
+        <input
+          type='text'
+          value={searchText}
+          onChange={({ target }) => setSearchText(target.value)}
+        />
+        <button type='submit'>Search</button>
+      </form>
     </StyledNav>
   )
 }
@@ -63,3 +83,6 @@ const LogoContainer = styled(motion.div)`
 `
 
 export default Nav
+function useSSate(initialState: any): [any, any] {
+  throw new Error('Function not implemented.')
+}

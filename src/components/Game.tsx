@@ -1,16 +1,22 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import IGame from '../model/Game'
 import { loadGameDetails } from '../store/actions/gameDetails'
 import { resizeImagePath } from '../util/image'
 
 const Game: React.FC<{ game: IGame }> = ({ game }) => {
+  const { id: paramId } = useParams<{ id: string }>()
   const { id, name, released, background_image: img } = game
 
   const dispatch = useDispatch()
   const onLoadGameDetails = () => {
+    if (paramId === id) {
+      return
+    }
+
     dispatch(loadGameDetails(id))
   }
 
