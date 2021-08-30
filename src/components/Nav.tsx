@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { fadeIn } from '../animations'
 import { logo } from '../img'
 import { clearSearched, searchGames } from '../store/actions/games'
 
@@ -21,7 +22,7 @@ const Nav = () => {
   }
 
   return (
-    <StyledNav>
+    <StyledNav variants={fadeIn} initial='hidden' animate='show'>
       <LogoContainer onClick={() => onClearSearched()}>
         <img src={logo} alt='Ignite' />
         <h1>Ignite</h1>

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { fadeIn } from '../animations'
 import Game from '../components/Game'
 import GameDetails from '../components/GameDetails'
 import { loadGames } from '../store/actions/games'
@@ -19,7 +20,7 @@ const Home = () => {
   const { popular, fresh, upcoming, searched } = games
 
   return (
-    <GameList>
+    <GameList variants={fadeIn} initial='hidden' animate='show'>
       <AnimateSharedLayout type='crossfade'>
         <AnimatePresence>
           <GameDetails />

@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import { popup } from '../animations'
 import IGame from '../model/Game'
 import { loadGameDetails } from '../store/actions/gameDetails'
 import { resizeImagePath } from '../util/image'
@@ -21,7 +22,13 @@ const Game: React.FC<{ game: IGame }> = ({ game }) => {
   }
 
   return (
-    <StyledGame layoutId={`${id}`} onClick={onLoadGameDetails}>
+    <StyledGame
+      layoutId={`${id}`}
+      onClick={onLoadGameDetails}
+      variants={popup}
+      initial='hidden'
+      animate='show'
+    >
       <motion.h3 layoutId={`name-${id}`}>{name}</motion.h3>
       <p>{released}</p>
       <motion.img
