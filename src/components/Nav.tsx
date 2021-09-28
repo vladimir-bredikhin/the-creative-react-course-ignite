@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { fadeIn } from '../animations'
@@ -10,7 +10,7 @@ const Nav = () => {
   const dispatch = useDispatch()
   const [searchText, setSearchText] = useState('')
 
-  const onSearchGames = (e: Event) => {
+  const onSearchGames = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     dispatch(searchGames(searchText))
